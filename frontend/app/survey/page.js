@@ -12,8 +12,11 @@ export default function Page() {
     const [occupation, setOccupation] = useState('');
     const [suveryData, setSurveyData] = useState([]);
 
+    const backendURL = process.env.NEXT_PUBLIC_BACKEND_URL;
+    console.log(backendURL)
+
     const getData = async () => {
-        fetch('http://localhost:8000/api/survey')
+        fetch(backendURL)
             .then((data) => data.json())
             .then((data) => {
                 setSurveyData(data.data);
@@ -27,7 +30,7 @@ export default function Page() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const data = { "name": name, "age": age, "occupation": occupation };
-        const res = await fetch('http://localhost:8000/api/survey', {
+        const res = await fetch(backendURL, {
             headers: {
                 'Content-Type': 'application/json'
             },

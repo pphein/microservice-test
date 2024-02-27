@@ -35,7 +35,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # RUN useradd -G www-data,root
 # RUN mkdir -p /home/$user/.composer && \
     # chown -R $user:$user /home/$user
-
+COPY .env.example .env
 WORKDIR /var/www
 COPY . /var/www
 RUN composer install
