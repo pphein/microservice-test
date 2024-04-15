@@ -38,6 +38,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 COPY .env.example .env
 WORKDIR /var/www
 COPY . /var/www
+COPY .env.example .env
 RUN composer install
 
 CMD ["sh", "-c", "php artisan serve --host=0.0.0.0 --port=8000"]
