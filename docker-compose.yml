@@ -19,6 +19,8 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
     image: nextjs-frontend
+    volumes:
+      - ./frontend/.env:/app/.env
     container_name: frontend
     depends_on:
       - backend
